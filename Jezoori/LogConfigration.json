@@ -1,0 +1,52 @@
+{
+  "Serilog": {
+    "Using": [],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console"
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "c:/JezooriLogs/Logs.txt",
+          "outputTemplate": "{Timestamp} {Message}{NewLine}{Exception}"
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "c:/JezooriLogs/Logs.json",
+          "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog"
+        }
+      },
+      {
+        "Name": "MSSqlServer",
+        "Args": {
+          "connectionString": "Data Source=.;Initial Catalog=Jezoori_Context;Integrated Security=True;TrustServerCertificate=True;Encrypt = False",
+          "sinkOptionsSection": {
+            "tableName": "JezooriLogs",
+            "schemaName": "logging",
+            "autoCreateSqlTable": true
+          },
+          "restrictedToMinimumLevel": "Information"
+        }
+      }
+    ],
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName",
+      "WithProcessId",
+      "WithThreadId"
+    ],
+    "Properties": {
+      "ApplicationName": "Presentation"
+    }
+  }
+}

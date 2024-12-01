@@ -1,0 +1,9 @@
+﻿global using Jezoori.Base;
+global using Jezoori.Context;
+global using Jezoori.IRepository;
+global using Jezoori.Models;
+global using Microsoft.EntityFrameworkCore;
+global using Jezoori.IBase;
+global using System.Data;
+global using Microsoft.AspNetCore.Mvc;
+global using System.Diagnostics;
