@@ -1,9 +1,12 @@
-﻿namespace Jezoori.Mapping
+﻿using AutoMapper;
+
+namespace Jezoori.Mapping
 {
-    public class MappingProfile
+    public class MappingProfile:Profile
     {
         public MappingProfile()
         {
+            //CreateMap<Order, Order>();
         }
     }
 }
